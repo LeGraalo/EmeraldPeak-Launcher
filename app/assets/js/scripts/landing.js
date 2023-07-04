@@ -317,13 +317,13 @@ async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
         // If the result is null, no valid Java installation was found.
         // Show this information to the user.
         setOverlayContent(
-            'No Compatible<br>Java Installation Found',
-            `In order to join WesterosCraft, you need a 64-bit installation of Java ${effectiveJavaOptions.suggestedMajor}. Would you like us to install a copy?`,
-            'Install Java',
-            'Install Manually'
+            '<br>Aucune installation de Java compatible trouvée.',
+            `Pour rejoindre EmeraldPeak, vous avez besoin d'une installation 64-bits de Java ${effectiveJavaOptions.suggestedMajor}. Voulez-vous installer une copie ?`,
+            'Installer Java',
+            'Installer Manuellement'
         )
         setOverlayHandler(() => {
-            setLaunchDetails('Preparing Java Download..')
+            setLaunchDetails('Préparation du téléchargement de Java..')
             toggleOverlay(false)
             
             try {
@@ -337,10 +337,10 @@ async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
             $('#overlayContent').fadeOut(250, () => {
                 //$('#overlayDismiss').toggle(false)
                 setOverlayContent(
-                    'Java is Required<br>to Launch',
-                    `A valid x64 installation of Java ${effectiveJavaOptions.suggestedMajor} is required to launch.<br><br>Please refer to our <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a> for instructions on how to manually install Java.`,
-                    'I Understand',
-                    'Go Back'
+                    'Java est requis <br>pour démarrer.',
+                    `Une installation X64 valide de Java ${effectiveJavaOptions.suggestedMajor} est requis pour démarrer.<br><br>Veuillez contacter un membre du staff sur Discord pour vous aider à régler ce problème.`,
+                    'Je Comprends',
+                    'Retour'
                 )
                 setOverlayHandler(() => {
                     toggleLaunchArea(false)
@@ -409,7 +409,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     remote.getCurrentWindow().setProgressBar(2)
 
     // Wait for extration to complete.
-    const eLStr = 'Extracting Java'
+    const eLStr = 'Extraction de Java'
     let dotStr = ''
     setLaunchDetails(eLStr)
     const extractListener = setInterval(() => {
@@ -431,7 +431,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     ConfigManager.save()
 
     clearInterval(extractListener)
-    setLaunchDetails('Java Installed!')
+    setLaunchDetails('Java Installé !')
 
     // TODO Callback hell
     // Refactor the launch functions
@@ -503,8 +503,8 @@ async function dlAsync(login = true) {
         }
     })
 
-    loggerLaunchSuite.info('Validating files.')
-    setLaunchDetails('Validating file integrity..')
+    loggerLaunchSuite.info('Validation integrité des fichiers.')
+    setLaunchDetails('Validation integrité des fichiers..')
     let invalidFileCount = 0
     try {
         invalidFileCount = await fullRepairModule.verifyFiles(percent => {
@@ -519,8 +519,8 @@ async function dlAsync(login = true) {
     
 
     if(invalidFileCount > 0) {
-        loggerLaunchSuite.info('Downloading files.')
-        setLaunchDetails('Downloading files..')
+        loggerLaunchSuite.info('Téléchargement des fichiers.')
+        setLaunchDetails('Téléchargement des fichiers..')
         setLaunchPercentage(0)
         try {
             await fullRepairModule.download(percent => {
@@ -541,7 +541,7 @@ async function dlAsync(login = true) {
 
     fullRepairModule.destroyReceiver()
 
-    setLaunchDetails('Preparing to launch..')
+    setLaunchDetails('Préparation au lancement..')
 
     const mojangIndexProcessor = new MojangIndexProcessor(
         ConfigManager.getCommonDirectory(),
@@ -559,7 +559,7 @@ async function dlAsync(login = true) {
         const authUser = ConfigManager.getSelectedAccount()
         loggerLaunchSuite.info(`Sending selected account (${authUser.displayName}) to ProcessBuilder.`)
         let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
-        setLaunchDetails('Launching game..')
+        setLaunchDetails('Lancement du jeu..')
 
         // const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
         const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} joined the game`)
@@ -567,7 +567,7 @@ async function dlAsync(login = true) {
         const onLoadComplete = () => {
             toggleLaunchArea(false)
             if(hasRPC){
-                DiscordWrapper.updateDetails('Loading game..')
+                DiscordWrapper.updateDetails('Chargement du jeu..')
                 proc.stdout.on('data', gameStateChange)
             }
             proc.stdout.removeListener('data', tempListener)
@@ -616,7 +616,7 @@ async function dlAsync(login = true) {
             proc.stdout.on('data', tempListener)
             proc.stderr.on('data', gameErrorListener)
 
-            setLaunchDetails('Done. Enjoy the server!')
+            setLaunchDetails('Terminé. Amusez-vous bien !')
 
             // Init Discord Hook
             if(distro.rawDistribution.discord != null && serv.rawServerdiscord != null){
@@ -740,7 +740,7 @@ let newsLoadingListener = null
  */
 function setNewsLoading(val){
     if(val){
-        const nLStr = 'Checking for News'
+        const nLStr = 'Actualisation des News'
         let dotStr = '..'
         nELoadSpan.innerHTML = nLStr + dotStr
         newsLoadingListener = setInterval(() => {

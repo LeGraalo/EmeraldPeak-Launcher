@@ -14,20 +14,20 @@ The distribution index is written in JSON. The general format of the index is as
         "smallImageText": "WesterosCraft",
         "smallImageKey": "seal-circle"
     },
-    "rss": "https://westeroscraft.com/articles/index.rss",
+    "rss": "/",
     "servers": [
         {
-            "id": "Example_Server",
-            "name": "WesterosCraft Example Client",
-            "description": "Example WesterosCraft server. Connect for fun!",
-            "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/example_icon.png",
+            "id": "EmeraldPeak_Server",
+            "name": "EmeraldPeak",
+            "description": "Serveur EmeraldPeak, rejoignez l'aventure !",
+            "icon": "https://image.noelshack.com/fichiers/2023/27/2/1688437323-emeraldpeaklogo.jpg",
             "version": "0.0.1",
-            "address": "mc.westeroscraft.com:1337",
-            "minecraftVersion": "1.11.2",
+            "address": "mc.emeraldpeak.fr",
+            "minecraftVersion": "1.19.2",
             "discord": {
-                "shortId": "Example",
-                "largeImageText": "WesterosCraft Example Server",
-                "largeImageKey": "server-example"
+                "shortId": "EmeraldPeak",
+                "largeImageText": "EmeraldPeak ModPack",
+                "largeImageKey": "https://image.noelshack.com/fichiers/2023/27/2/1688437323-emeraldpeaklogo.jpg"
             },
             "mainServer": true,
             "autoconnect": true,
@@ -50,7 +50,7 @@ The distribution index is written in JSON. The general format of the index is as
         "smallImageText": "WesterosCraft",
         "smallImageKey": "seal-circle"
     },
-    "rss": "https://westeroscraft.com/articles/index.rss",
+    "rss": "/",
     "servers": []
 }
 ```
@@ -81,17 +81,17 @@ A URL to a RSS feed. Used for loading news.
 #### Example
 ```JSON
 {
-    "id": "Example_Server",
-    "name": "WesterosCraft Example Client",
-    "description": "Example WesterosCraft server. Connect for fun!",
-    "icon": "http://mc.westeroscraft.com/WesterosCraftLauncher/files/example_icon.png",
+    "id": "EmeraldPeak_Server",
+    "name": "EmeraldPeak",
+    "description": "Serveur EmeraldPeak, rejoignez l'aventure !",
+    "icon": "https://image.noelshack.com/fichiers/2023/27/2/1688437323-emeraldpeaklogo.jpg",
     "version": "0.0.1",
-    "address": "mc.westeroscraft.com:1337",
-    "minecraftVersion": "1.11.2",
+    "address": "mc.emeraldpeak.fr",
+    "minecraftVersion": "1.19.2",
     "discord": {
-        "shortId": "Example",
-        "largeImageText": "WesterosCraft Example Server",
-        "largeImageKey": "server-example"
+        "shortId": "EmeraldPeak",
+        "largeImageText": "EmeraldPeak ModPack",
+        "largeImageKey": "https://image.noelshack.com/fichiers/2023/27/2/1688437323-emeraldpeaklogo.jpg"
     },
     "mainServer": true,
     "autoconnect": true,
